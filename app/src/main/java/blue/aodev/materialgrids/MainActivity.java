@@ -25,14 +25,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (OverlayService.isStarted()) {
-                    stopService(new Intent(MainActivity.this, OverlayService.class));
-                    updateStartStopButton(false);
+                    stopOverlayService();
                 } else {
-                    startService(new Intent(MainActivity.this, OverlayService.class));
-                    updateStartStopButton(true);
+                    startOverlayService();
                 }
             }
         });
+    }
+
+    private void startOverlayService() {
+        startService(new Intent(MainActivity.this, OverlayService.class));
+        updateStartStopButton(true);
+    }
+
+    private void stopOverlayService() {
+        stopService(new Intent(MainActivity.this, OverlayService.class));
+        updateStartStopButton(false);
     }
 
     private void updateStartStopButton(boolean isStarted) {
