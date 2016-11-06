@@ -80,7 +80,7 @@ public class OverlayService extends Service {
                 new Intent(this, MainActivity.class), 0);
 
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_material_grids_face_on_24dp)
                 .setTicker(text)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(getText(R.string.app_name))
