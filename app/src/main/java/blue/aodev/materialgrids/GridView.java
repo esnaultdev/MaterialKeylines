@@ -3,11 +3,11 @@ package blue.aodev.materialgrids;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
+
+import blue.aodev.materialgrids.utils.ColorUtil;
 
 public class GridView extends View {
 
@@ -42,11 +42,14 @@ public class GridView extends View {
         Resources r = getResources();
 
         float strokeWidth = 1;
-        gridSpacing = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, r.getDisplayMetrics());
+        gridSpacing = r.getDimension(material.values.R.dimen.material_baseline_grid_1x);
+
+        int colorRes = material.values.R.color.material_color_red_primary;
+        int color = ColorUtil.getColor(r, getContext().getTheme(), colorRes);
 
         gridPaint = new Paint();
-        gridPaint.setColor(Color.RED);
-        gridPaint.setAlpha(50);
+        gridPaint.setColor(color);
+        gridPaint.setAlpha(64);
         gridPaint.setStrokeWidth(strokeWidth);
         gridPaint.setStyle(Paint.Style.STROKE);
     }
