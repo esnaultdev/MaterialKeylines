@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GridView">
+        <attr name="spacing" format="integer" />
+        <attr name="color" format="color" />
+        <attr name="opacity" format="float" />
+        <attr name="strokeWidth" format="float" />
+    </declare-styleable>
+</resources>
