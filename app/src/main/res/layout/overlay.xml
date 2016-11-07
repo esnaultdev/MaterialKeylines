@@ -44,7 +44,17 @@
             custom:spacing="@dimen/material_baseline_grid_0.5x"
             custom:opacity="1"
             custom:strokeWidth="1"
-            custom:direction="horizontal"/>
+            custom:direction="horizontal"
+            android:visibility="invisible"/>
+
+        <blue.aodev.materialgrids.widget.IrregularLineView
+            android:id="@+id/content_keylines"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            custom:color="@color/material_color_orange_500"
+            custom:opacity="1"
+            custom:strokeWidth="2"
+            custom:direction="vertical"/>
     </FrameLayout>
 
 

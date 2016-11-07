@@ -8,18 +8,27 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+
+import blue.aodev.materialgrids.widget.IrregularLineView;
+import blue.aodev.materialgrids.widget.RegularLineView;
 
 public class OverlayService extends Service {
     private NotificationManager notificationManager;
     private WindowManager windowManager;
 
     private static boolean alreadyStarted;
-    private View view;
 
-    private int NOTIFICATION_ID = 1;
+    private View view;
+    private RegularLineView baselineGridView;
+    private RegularLineView incrementGridView;
+    private RegularLineView typographyKeylinesView;
+    private IrregularLineView contentKeylinesView;
+
+    private static final int NOTIFICATION_ID = 1;
 
     @Override
     public void onCreate() {
@@ -48,7 +57,7 @@ public class OverlayService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (!alreadyStarted) {
             showNotification();
-            showGrid();
+            showOverlay();
 
             alreadyStarted = true;
         }
@@ -56,8 +65,10 @@ public class OverlayService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    public void showGrid() {
-        view = LayoutInflater.from(this).inflate(R.layout.grid, null);
+    public void showOverlay() {
+        view = LayoutInflater.from(this).inflate(R.layout.overlay, null);
+        bindViews();
+        setupContentKeylines();
 
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
@@ -67,6 +78,30 @@ public class OverlayService extends Service {
                 PixelFormat.TRANSLUCENT);
 
         windowManager.addView(view, params);
+    }
+
+    private void bindViews() {
+        baselineGridView = (RegularLineView) view.findViewById(R.id.baseline_grid);
+        incrementGridView = (RegularLineView) view.findViewById(R.id.increment_grid);
+        typographyKeylinesView = (RegularLineView) view.findViewById(R.id.typography_lines);
+        contentKeylinesView = (IrregularLineView) view.findViewById(R.id.content_keylines);
+    }
+
+    private void setupContentKeylines() {
+        float contentEdgeMargin = getResources().getDimension(
+                material.values.R.dimen.material_content_edge_margin_horizontal);
+        float secondaryContentEdgeMargin = getResources().getDimension(
+                material.values.R.dimen.material_content_secondary_edge_margin_start);
+        DisplayMetrics metrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(metrics);
+        float screenWidth = metrics.widthPixels;
+
+        float[] coordinates = new float[] {
+                contentEdgeMargin,
+                secondaryContentEdgeMargin,
+                screenWidth - contentEdgeMargin
+        };
+        contentKeylinesView.setCoordinates(coordinates);
     }
 
     /**
