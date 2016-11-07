@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="GridView">
-        <attr name="spacing" format="integer" />
+    <declare-styleable name="KeylineView">
         <attr name="color" format="color" />
         <attr name="opacity" format="float" />
+        <attr name="direction"/>
+    </declare-styleable>
+
+    <declare-styleable name="LineView">
         <attr name="strokeWidth" format="float" />
     </declare-styleable>
+
+    <declare-styleable name="RegularLineView">
+        <attr name="spacing" format="integer" />
+    </declare-styleable>
+
+    <attr name="direction" format="enum">
+        <enum name="vertical" value="0"/>
+        <enum name="horizontal" value="1"/>
+        <enum name="both" value="2"/>
+    </attr>
 </resources>

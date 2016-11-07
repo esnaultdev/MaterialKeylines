@@ -10,16 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/status_bar_height" />
 
-    <blue.aodev.materialgrids.GridView
+    <blue.aodev.materialgrids.widget.RegularLineView
         android:id="@+id/baseline_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/space"
         custom:color="@color/material_color_red_500"
         custom:spacing="@dimen/material_baseline_grid_1x"
-        custom:opacity="0.5" />
+        custom:opacity="0.5"
+        custom:direction="both"/>
 
-    <blue.aodev.materialgrids.GridView
+    <blue.aodev.materialgrids.widget.RegularLineView
         android:id="@+id/increment_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,5 +28,6 @@
         custom:color="@color/material_color_blue_500"
         custom:spacing="@dimen/material_increment_1x"
         custom:opacity="1"
-        custom:strokeWidth="2" />
+        custom:strokeWidth="2"
+        custom:direction="both"/>
 </RelativeLayout>
