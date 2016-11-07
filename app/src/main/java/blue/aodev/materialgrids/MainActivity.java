@@ -2,16 +2,20 @@ package blue.aodev.materialgrids;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.Switch;
+import android.widget.Toolbar;
 
+import blue.aodev.materialgrids.utils.ColorUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends Activity {
 
-    @BindView(R.id.start_stop_button) Button startStopButton;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    private Switch appBarSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +23,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        updateStartStopButton(OverlayService.isStarted());
-
-        startStopButton.setOnClickListener(new View.OnClickListener() {
+        setupAppBar();
+        updateSwitch(OverlayService.isStarted());
+        appBarSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (OverlayService.isStarted()) {
@@ -33,23 +37,28 @@ public class MainActivity extends Activity {
         });
     }
 
+    private void setupAppBar() {
+        Resources r = getResources();
+
+        toolbar.setTitle(R.string.app_name);
+        int color = ColorUtil.getColor(r, getTheme(), material.values.R.color.material_color_white);
+        toolbar.setTitleTextColor(color);
+
+        toolbar.inflateMenu(R.menu.app_bar_menu);
+        appBarSwitch = (Switch) toolbar.findViewById(R.id.action_switch);
+    }
+
     private void startOverlayService() {
         startService(new Intent(MainActivity.this, OverlayService.class));
-        updateStartStopButton(true);
+        updateSwitch(true);
     }
 
     private void stopOverlayService() {
         stopService(new Intent(MainActivity.this, OverlayService.class));
-        updateStartStopButton(false);
+        updateSwitch(false);
     }
 
-    private void updateStartStopButton(boolean isStarted) {
-        int resId;
-        if (isStarted) {
-            resId = R.string.stop;
-        } else {
-            resId = R.string.start;
-        }
-        startStopButton.setText(resId);
+    private void updateSwitch(boolean isStarted) {
+        appBarSwitch.setChecked(isStarted);
     }
 }

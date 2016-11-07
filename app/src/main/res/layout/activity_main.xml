@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context="blue.aodev.materialgrids.MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/start_stop_button"
-        android:text="@string/start" />
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/material_app_bar_height_default"
+        android:background="?android:attr/colorPrimary"
+        android:elevation="@dimen/material_elevation_app_bar"
+        android:paddingEnd="@dimen/material_app_bar_icon_action_margin_horizontal" />
+
 </RelativeLayout>

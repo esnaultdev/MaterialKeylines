@@ -11,6 +11,7 @@
         android:layout_height="@dimen/status_bar_height" />
 
     <blue.aodev.materialgrids.GridView
+        android:id="@+id/baseline_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/space"
@@ -19,6 +20,7 @@
         custom:opacity="0.5" />
 
     <blue.aodev.materialgrids.GridView
+        android:id="@+id/increment_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/space"
