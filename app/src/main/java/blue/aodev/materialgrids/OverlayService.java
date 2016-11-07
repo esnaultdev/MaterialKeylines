@@ -5,9 +5,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -70,6 +73,7 @@ public class OverlayService extends Service {
         view = LayoutInflater.from(this).inflate(R.layout.overlay, null);
         bindViews();
         setupContentKeylines();
+        readFromPreferences();
 
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
@@ -103,6 +107,28 @@ public class OverlayService extends Service {
                 screenWidth - contentEdgeMargin
         };
         contentKeylinesView.setCoordinates(coordinates);
+    }
+
+    private void readFromPreferences() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean baselineGridEnabled = preferences.getBoolean(
+                getString(R.string.pref_key_baseline_grid_enabled), false);
+        boolean incrementGridEnabled = preferences.getBoolean(
+                getString(R.string.pref_key_increment_grid_enabled), false);
+        boolean typographyLinesEnabled = preferences.getBoolean(
+                getString(R.string.pref_key_typography_lines_enabled), false);
+        boolean contentKeylinesEnabled = preferences.getBoolean(
+                getString(R.string.pref_key_content_keylines_enabled), false);
+
+        setVisible(baselineGridView, baselineGridEnabled);
+        setVisible(incrementGridView, incrementGridEnabled);
+        setVisible(typographyKeylinesView, typographyLinesEnabled);
+        setVisible(contentKeylinesView, contentKeylinesEnabled);
+    }
+
+    private static void setVisible(@NonNull View view, boolean visible) {
+        int visibility = visible ? View.VISIBLE : View.INVISIBLE;
+        view.setVisibility(visibility);
     }
 
     /**

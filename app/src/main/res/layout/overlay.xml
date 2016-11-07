@@ -23,7 +23,7 @@
             custom:spacing="@dimen/material_baseline_grid_1x"
             custom:opacity="0.5"
             custom:direction="both"
-            android:visibility="invisible"/>
+            android:visibility="visible"/>
 
         <blue.aodev.materialgrids.widget.RegularLineView
             android:id="@+id/increment_grid"
@@ -53,7 +53,7 @@
             android:layout_height="match_parent"
             custom:color="@color/material_color_orange_500"
             custom:opacity="1"
-            custom:strokeWidth="2"
+            custom:strokeWidth="4"
             custom:direction="vertical"/>
     </FrameLayout>
 

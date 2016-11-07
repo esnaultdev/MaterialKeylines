@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.Toolbar;
@@ -60,5 +61,14 @@ public class MainActivity extends Activity {
 
     private void updateSwitch(boolean isStarted) {
         appBarSwitch.setChecked(isStarted);
+    }
+
+    public static class SettingsFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            
+            addPreferencesFromResource(R.xml.preferences);
+        }
     }
 }

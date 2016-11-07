@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_title_baseline_grid">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:title="@string/enabled"
+            android:key="@string/pref_key_baseline_grid_enabled" />
+        <ListPreference
+            android:defaultValue="@string/pref_values_transparency_default"
+            android:title="@string/pref_name_transparency"
+            android:entries="@array/pref_name_transparency_entries"
+            android:entryValues="@array/pref_values_transparency"
+            android:key="@string/pref_key_baseline_grid_transparency" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_title_increment_grid">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="@string/enabled"
+            android:key="@string/pref_key_increment_grid_enabled" />
+        <ListPreference
+            android:defaultValue="@string/pref_values_transparency_default"
+            android:title="@string/pref_name_transparency"
+            android:entries="@array/pref_name_transparency_entries"
+            android:entryValues="@array/pref_values_transparency"
+            android:key="@string/pref_key_increment_grid_transparency" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_title_typography_lines">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="@string/enabled"
+            android:key="@string/pref_key_typography_lines_enabled" />
+        <ListPreference
+            android:defaultValue="@string/pref_values_transparency_default"
+            android:title="@string/pref_name_transparency"
+            android:entries="@array/pref_name_transparency_entries"
+            android:entryValues="@array/pref_values_transparency"
+            android:key="@string/pref_key_typography_lines_transparency" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_title_content_keylines">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="@string/enabled"
+            android:key="@string/pref_key_content_keylines_enabled" />
+        <ListPreference
+            android:defaultValue="@string/pref_values_transparency_default"
+            android:title="@string/pref_name_transparency"
+            android:entries="@array/pref_name_transparency_entries"
+            android:entryValues="@array/pref_values_transparency"
+            android:key="@string/pref_key_content_keylines_transparency" />
+    </PreferenceCategory>
+</PreferenceScreen>
