@@ -12,6 +12,6 @@
         android:layout_height="@dimen/material_app_bar_height_default"
         android:background="?android:attr/colorPrimary"
         android:elevation="@dimen/material_elevation_app_bar"
-        android:paddingEnd="@dimen/material_app_bar_icon_action_margin_horizontal" />
+        android:paddingEnd="@dimen/material_content_edge_margin_horizontal" />
 
 </RelativeLayout>

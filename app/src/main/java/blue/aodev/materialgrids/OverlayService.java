@@ -109,19 +109,17 @@ public class OverlayService extends Service {
      * Show a notification while this service is running.
      */
     private void showNotification() {
-        CharSequence text = getText(R.string.stop);
-
-        // The PendingIntent to launch our activity if the user selects this notification
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);
+        PendingIntent deleteIntent = PendingIntent.getBroadcast(this, 0 ,
+                ToggleReceiver.getIntent(false), 0);
 
         Notification notification = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_material_grids_face_on_24dp)
-                .setTicker(text)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(getText(R.string.app_name))
-                .setContentText(text)
-                .setContentIntent(contentIntent)
+                .setContentText(getText(R.string.overlay_notification_text))
+                .setContentIntent(deleteIntent)
+                .setPriority(Notification.PRIORITY_LOW)
+                .setOngoing(true)
                 .build();
 
         notificationManager.notify(NOTIFICATION_ID, notification);

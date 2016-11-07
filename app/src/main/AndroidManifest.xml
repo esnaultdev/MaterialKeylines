@@ -21,6 +21,15 @@
         <service
             android:name=".OverlayService"
             android:exported="false" />
+
+        <receiver
+            android:name=".ToggleReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="blue.aodev.materialgrids.TOGGLE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
