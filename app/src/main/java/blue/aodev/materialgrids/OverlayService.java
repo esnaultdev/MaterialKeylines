@@ -12,12 +12,14 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
 import blue.aodev.materialgrids.widget.IrregularLineView;
+import blue.aodev.materialgrids.widget.KeylineView;
 import blue.aodev.materialgrids.widget.RegularLineView;
 
 public class OverlayService extends Service {
@@ -73,7 +75,7 @@ public class OverlayService extends Service {
         view = LayoutInflater.from(this).inflate(R.layout.overlay, null);
         bindViews();
         setupContentKeylines();
-        readFromPreferences();
+        readPreferences();
 
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
@@ -109,26 +111,66 @@ public class OverlayService extends Service {
         contentKeylinesView.setCoordinates(coordinates);
     }
 
-    private void readFromPreferences() {
+    private void readPreferences() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean baselineGridEnabled = preferences.getBoolean(
-                getString(R.string.pref_key_baseline_grid_enabled), false);
-        boolean incrementGridEnabled = preferences.getBoolean(
-                getString(R.string.pref_key_increment_grid_enabled), false);
-        boolean typographyLinesEnabled = preferences.getBoolean(
-                getString(R.string.pref_key_typography_lines_enabled), false);
-        boolean contentKeylinesEnabled = preferences.getBoolean(
-                getString(R.string.pref_key_content_keylines_enabled), false);
 
-        setVisible(baselineGridView, baselineGridEnabled);
-        setVisible(incrementGridView, incrementGridEnabled);
-        setVisible(typographyKeylinesView, typographyLinesEnabled);
-        setVisible(contentKeylinesView, contentKeylinesEnabled);
+        readBaselineGridPrefs(preferences);
+        readIncrementGridPrefs(preferences);
+        readTypographyLinesPrefs(preferences);
+        readContentKeylinesPrefs(preferences);
+    }
+
+    private void readBaselineGridPrefs(@NonNull SharedPreferences preferences) {
+        boolean enable = readEnable(preferences, R.string.pref_key_baseline_grid_enabled);
+        setVisible(baselineGridView, enable);
+        if (!enable) {
+            readOpacity(preferences, R.string.pref_key_baseline_grid_transparency,
+                    baselineGridView);
+        }
+    }
+
+    private void readIncrementGridPrefs(@NonNull SharedPreferences preferences) {
+        boolean enable = readEnable(preferences, R.string.pref_key_increment_grid_enabled);
+        setVisible(incrementGridView, enable);
+        if (!enable) {
+            readOpacity(preferences, R.string.pref_key_baseline_grid_transparency,
+                    baselineGridView);
+        }
+    }
+
+    private void readTypographyLinesPrefs(@NonNull SharedPreferences preferences) {
+        boolean enable = readEnable(preferences, R.string.pref_key_typography_lines_enabled);
+        setVisible(typographyKeylinesView, enable);
+        if (!enable) {
+            readOpacity(preferences, R.string.pref_key_baseline_grid_transparency,
+                    baselineGridView);
+        }
+    }
+
+    private void readContentKeylinesPrefs(@NonNull SharedPreferences preferences) {
+        boolean enable = readEnable(preferences, R.string.pref_key_content_keylines_enabled);
+        setVisible(contentKeylinesView, enable);
+        if (!enable) {
+            readOpacity(preferences, R.string.pref_key_baseline_grid_transparency,
+                    baselineGridView);
+        }
+    }
+
+    private boolean readEnable(@NonNull SharedPreferences preferences, @StringRes int keyStringId) {
+        return preferences.getBoolean(getString(keyStringId), false);
     }
 
     private static void setVisible(@NonNull View view, boolean visible) {
         int visibility = visible ? View.VISIBLE : View.INVISIBLE;
         view.setVisibility(visibility);
+    }
+
+    private void readOpacity(@NonNull SharedPreferences preferences, @StringRes int keyStringId,
+                             @NonNull KeylineView view) {
+        String defaultOpacityString = getString(R.string.pref_values_transparency_default);
+        String opacityString = preferences.getString(getString(keyStringId), defaultOpacityString);
+        int opacity = Integer.parseInt(opacityString);
+        view.setOpacity(opacity / 100f);
     }
 
     /**
