@@ -19,4 +19,9 @@
         <enum name="horizontal" value="1"/>
         <enum name="both" value="2"/>
     </attr>
+
+    <declare-styleable name="ColorListPreference">
+        <attr name="entries" format="reference"/>
+        <attr name="entryValues" format="reference"/>
+    </declare-styleable>
 </resources>

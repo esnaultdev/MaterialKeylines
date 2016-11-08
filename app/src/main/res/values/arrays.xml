@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="pref_values_color">
+        <item>@color/material_color_red_primary</item>
+        <item>@color/material_color_purple_primary</item>
+        <item>@color/material_color_blue_primary</item>
+        <item>@color/material_color_green_primary</item>
+        <item>@color/material_color_orange_primary</item>
+    </array>
+</resources>

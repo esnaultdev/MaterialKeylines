@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/pref_title_baseline_grid">
 
@@ -10,9 +11,16 @@
         <ListPreference
             android:defaultValue="@string/pref_values_opacity_default"
             android:title="@string/pref_name_opacity"
+            android:summary="%s"
             android:entries="@array/pref_name_opacity_entries"
             android:entryValues="@array/pref_values_opacity"
             android:key="@string/pref_key_baseline_grid_opacity" />
+        <blue.aodev.materialgrids.ColorListPreference
+            android:defaultValue="@color/pref_baseline_grid_default_color"
+            android:title="@string/pref_name_color"
+            custom:entries="@array/pref_name_color_entries"
+            custom:entryValues="@array/pref_values_color"
+            android:key="@string/pref_key_baseline_grid_color" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_title_increment_grid">
 
@@ -23,9 +31,16 @@
         <ListPreference
             android:defaultValue="@string/pref_values_opacity_default"
             android:title="@string/pref_name_opacity"
+            android:summary="%s"
             android:entries="@array/pref_name_opacity_entries"
             android:entryValues="@array/pref_values_opacity"
             android:key="@string/pref_key_increment_grid_opacity" />
+        <blue.aodev.materialgrids.ColorListPreference
+            android:defaultValue="@color/pref_increment_grid_default_color"
+            android:title="@string/pref_name_color"
+            custom:entries="@array/pref_name_color_entries"
+            custom:entryValues="@array/pref_values_color"
+            android:key="@string/pref_key_increment_grid_color" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_title_typography_lines">
 
@@ -36,9 +51,16 @@
         <ListPreference
             android:defaultValue="@string/pref_values_opacity_default"
             android:title="@string/pref_name_opacity"
+            android:summary="%s"
             android:entries="@array/pref_name_opacity_entries"
             android:entryValues="@array/pref_values_opacity"
             android:key="@string/pref_key_typography_lines_opacity" />
+        <blue.aodev.materialgrids.ColorListPreference
+            android:defaultValue="@color/pref_typography_lines_default_color"
+            android:title="@string/pref_name_color"
+            custom:entries="@array/pref_name_color_entries"
+            custom:entryValues="@array/pref_values_color"
+            android:key="@string/pref_key_typography_lines_color" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_title_content_keylines">
 
@@ -49,8 +71,15 @@
         <ListPreference
             android:defaultValue="@string/pref_values_opacity_default"
             android:title="@string/pref_name_opacity"
+            android:summary="%s"
             android:entries="@array/pref_name_opacity_entries"
             android:entryValues="@array/pref_values_opacity"
             android:key="@string/pref_key_content_keylines_opacity" />
+        <blue.aodev.materialgrids.ColorListPreference
+            android:defaultValue="@color/pref_content_keylines_default_color"
+            android:title="@string/pref_name_color"
+            custom:entries="@array/pref_name_color_entries"
+            custom:entryValues="@array/pref_values_color"
+            android:key="@string/pref_key_content_keylines_color" />
     </PreferenceCategory>
 </PreferenceScreen>

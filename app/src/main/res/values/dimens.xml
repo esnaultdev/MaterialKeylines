@@ -1,3 +1,4 @@
 <resources>
     <dimen name="status_bar_height">25dp</dimen>
+    <dimen name="preference_title_text_size">@dimen/material_typography_regular_subheading_text_size</dimen>
 </resources>

@@ -37,4 +37,19 @@
     <string translatable="false" name="pref_key_increment_grid_opacity">increment_grid_opacity</string>
     <string translatable="false" name="pref_key_content_keylines_opacity">content_keylines_opacity</string>
 
+
+    <!-- Color preference -->
+    <string name="pref_name_color">Color</string>
+    <string-array name="pref_name_color_entries">
+        <item>Red</item>
+        <item>Purple</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Orange</item>
+    </string-array>
+    <string translatable="false" name="pref_key_baseline_grid_color">baseline_grid_color</string>
+    <string translatable="false" name="pref_key_typography_lines_color">typography_lines_color</string>
+    <string translatable="false" name="pref_key_increment_grid_color">increment_grid_color</string>
+    <string translatable="false" name="pref_key_content_keylines_color">content_keylines_color</string>
+
 </resources>

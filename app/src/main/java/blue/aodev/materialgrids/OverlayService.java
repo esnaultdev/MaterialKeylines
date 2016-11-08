@@ -12,6 +12,7 @@ import android.graphics.PixelFormat;
 import android.os.Binder;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -20,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
+import blue.aodev.materialgrids.utils.ColorUtil;
 import blue.aodev.materialgrids.widget.IrregularLineView;
 import blue.aodev.materialgrids.widget.KeylineView;
 import blue.aodev.materialgrids.widget.RegularLineView;
@@ -144,6 +146,8 @@ public class OverlayService extends Service {
         if (enable) {
             readOpacity(preferences, R.string.pref_key_baseline_grid_opacity,
                     baselineGridView);
+            readColor(preferences, R.string.pref_key_baseline_grid_color,
+                    baselineGridView, R.color.pref_baseline_grid_default_color);
         }
     }
 
@@ -153,6 +157,8 @@ public class OverlayService extends Service {
         if (enable) {
             readOpacity(preferences, R.string.pref_key_increment_grid_opacity,
                     incrementGridView);
+            readColor(preferences, R.string.pref_key_increment_grid_color,
+                    incrementGridView, R.color.pref_increment_grid_default_color);
         }
     }
 
@@ -162,6 +168,8 @@ public class OverlayService extends Service {
         if (enable) {
             readOpacity(preferences, R.string.pref_key_typography_lines_opacity,
                     typographyLinesView);
+            readColor(preferences, R.string.pref_key_typography_lines_color,
+                    typographyLinesView, R.color.pref_typography_lines_default_color);
         }
     }
 
@@ -171,6 +179,8 @@ public class OverlayService extends Service {
         if (enable) {
             readOpacity(preferences, R.string.pref_key_content_keylines_opacity,
                     contentKeylinesView);
+            readColor(preferences, R.string.pref_key_content_keylines_color,
+                    contentKeylinesView, R.color.pref_content_keylines_default_color);
         }
     }
 
@@ -189,6 +199,13 @@ public class OverlayService extends Service {
         String opacityString = preferences.getString(getString(keyStringId), defaultOpacityString);
         int opacity = Integer.parseInt(opacityString);
         view.setOpacity(opacity / 100f);
+    }
+
+    private void readColor(@NonNull SharedPreferences preferences, @StringRes int keyStringId,
+                           @NonNull KeylineView view, @ColorRes int defaultColorId) {
+        int defaultColor = ColorUtil.getColor(getResources(), getTheme(), defaultColorId);
+        int color = preferences.getInt(getString(keyStringId), defaultColor);
+        view.setColor(color);
     }
 
     /**
