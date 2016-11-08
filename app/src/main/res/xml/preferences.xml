@@ -8,11 +8,11 @@
             android:title="@string/enabled"
             android:key="@string/pref_key_baseline_grid_enabled" />
         <ListPreference
-            android:defaultValue="@string/pref_values_transparency_default"
-            android:title="@string/pref_name_transparency"
-            android:entries="@array/pref_name_transparency_entries"
-            android:entryValues="@array/pref_values_transparency"
-            android:key="@string/pref_key_baseline_grid_transparency" />
+            android:defaultValue="@string/pref_values_opacity_default"
+            android:title="@string/pref_name_opacity"
+            android:entries="@array/pref_name_opacity_entries"
+            android:entryValues="@array/pref_values_opacity"
+            android:key="@string/pref_key_baseline_grid_opacity" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_title_increment_grid">
 
@@ -21,11 +21,11 @@
             android:title="@string/enabled"
             android:key="@string/pref_key_increment_grid_enabled" />
         <ListPreference
-            android:defaultValue="@string/pref_values_transparency_default"
-            android:title="@string/pref_name_transparency"
-            android:entries="@array/pref_name_transparency_entries"
-            android:entryValues="@array/pref_values_transparency"
-            android:key="@string/pref_key_increment_grid_transparency" />
+            android:defaultValue="@string/pref_values_opacity_default"
+            android:title="@string/pref_name_opacity"
+            android:entries="@array/pref_name_opacity_entries"
+            android:entryValues="@array/pref_values_opacity"
+            android:key="@string/pref_key_increment_grid_opacity" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_title_typography_lines">
 
@@ -34,11 +34,11 @@
             android:title="@string/enabled"
             android:key="@string/pref_key_typography_lines_enabled" />
         <ListPreference
-            android:defaultValue="@string/pref_values_transparency_default"
-            android:title="@string/pref_name_transparency"
-            android:entries="@array/pref_name_transparency_entries"
-            android:entryValues="@array/pref_values_transparency"
-            android:key="@string/pref_key_typography_lines_transparency" />
+            android:defaultValue="@string/pref_values_opacity_default"
+            android:title="@string/pref_name_opacity"
+            android:entries="@array/pref_name_opacity_entries"
+            android:entryValues="@array/pref_values_opacity"
+            android:key="@string/pref_key_typography_lines_opacity" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_title_content_keylines">
 
@@ -47,10 +47,10 @@
             android:title="@string/enabled"
             android:key="@string/pref_key_content_keylines_enabled" />
         <ListPreference
-            android:defaultValue="@string/pref_values_transparency_default"
-            android:title="@string/pref_name_transparency"
-            android:entries="@array/pref_name_transparency_entries"
-            android:entryValues="@array/pref_values_transparency"
-            android:key="@string/pref_key_content_keylines_transparency" />
+            android:defaultValue="@string/pref_values_opacity_default"
+            android:title="@string/pref_name_opacity"
+            android:entries="@array/pref_name_opacity_entries"
+            android:entryValues="@array/pref_values_opacity"
+            android:key="@string/pref_key_content_keylines_opacity" />
     </PreferenceCategory>
 </PreferenceScreen>

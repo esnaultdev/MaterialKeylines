@@ -35,7 +35,7 @@ public class OverlayService extends Service {
     private View view;
     private RegularLineView baselineGridView;
     private RegularLineView incrementGridView;
-    private RegularLineView typographyKeylinesView;
+    private RegularLineView typographyLinesView;
     private IrregularLineView contentKeylinesView;
 
     private static final int NOTIFICATION_ID = 1;
@@ -108,7 +108,7 @@ public class OverlayService extends Service {
     private void bindViews() {
         baselineGridView = (RegularLineView) view.findViewById(R.id.baseline_grid);
         incrementGridView = (RegularLineView) view.findViewById(R.id.increment_grid);
-        typographyKeylinesView = (RegularLineView) view.findViewById(R.id.typography_lines);
+        typographyLinesView = (RegularLineView) view.findViewById(R.id.typography_lines);
         contentKeylinesView = (IrregularLineView) view.findViewById(R.id.content_keylines);
     }
 
@@ -141,8 +141,8 @@ public class OverlayService extends Service {
     private void readBaselineGridPrefs(@NonNull SharedPreferences preferences) {
         boolean enable = readEnable(preferences, R.string.pref_key_baseline_grid_enabled);
         setVisible(baselineGridView, enable);
-        if (!enable) {
-            readOpacity(preferences, R.string.pref_key_baseline_grid_transparency,
+        if (enable) {
+            readOpacity(preferences, R.string.pref_key_baseline_grid_opacity,
                     baselineGridView);
         }
     }
@@ -150,27 +150,27 @@ public class OverlayService extends Service {
     private void readIncrementGridPrefs(@NonNull SharedPreferences preferences) {
         boolean enable = readEnable(preferences, R.string.pref_key_increment_grid_enabled);
         setVisible(incrementGridView, enable);
-        if (!enable) {
-            readOpacity(preferences, R.string.pref_key_baseline_grid_transparency,
-                    baselineGridView);
+        if (enable) {
+            readOpacity(preferences, R.string.pref_key_increment_grid_opacity,
+                    incrementGridView);
         }
     }
 
     private void readTypographyLinesPrefs(@NonNull SharedPreferences preferences) {
         boolean enable = readEnable(preferences, R.string.pref_key_typography_lines_enabled);
-        setVisible(typographyKeylinesView, enable);
-        if (!enable) {
-            readOpacity(preferences, R.string.pref_key_baseline_grid_transparency,
-                    baselineGridView);
+        setVisible(typographyLinesView, enable);
+        if (enable) {
+            readOpacity(preferences, R.string.pref_key_typography_lines_opacity,
+                    typographyLinesView);
         }
     }
 
     private void readContentKeylinesPrefs(@NonNull SharedPreferences preferences) {
         boolean enable = readEnable(preferences, R.string.pref_key_content_keylines_enabled);
         setVisible(contentKeylinesView, enable);
-        if (!enable) {
-            readOpacity(preferences, R.string.pref_key_baseline_grid_transparency,
-                    baselineGridView);
+        if (enable) {
+            readOpacity(preferences, R.string.pref_key_content_keylines_opacity,
+                    contentKeylinesView);
         }
     }
 
@@ -185,7 +185,7 @@ public class OverlayService extends Service {
 
     private void readOpacity(@NonNull SharedPreferences preferences, @StringRes int keyStringId,
                              @NonNull KeylineView view) {
-        String defaultOpacityString = getString(R.string.pref_values_transparency_default);
+        String defaultOpacityString = getString(R.string.pref_values_opacity_default);
         String opacityString = preferences.getString(getString(keyStringId), defaultOpacityString);
         int opacity = Integer.parseInt(opacityString);
         view.setOpacity(opacity / 100f);

@@ -17,24 +17,24 @@
     <string translatable="false" name="pref_key_increment_grid_enabled">increment_grid_enabled</string>
     <string translatable="false" name="pref_key_content_keylines_enabled">content_keylines_enabled</string>
 
-    <!-- Transparency preference -->
-    <string name="pref_name_transparency">Transparency</string>
-    <string-array name="pref_name_transparency_entries">
+    <!-- Opacity preference -->
+    <string name="pref_name_opacity">Opacity</string>
+    <string-array name="pref_name_opacity_entries">
         <item>25%</item>
         <item>50%</item>
         <item>75%</item>
         <item>100%</item>
     </string-array>
-    <string translatable="false" name="pref_values_transparency_default">100</string>
-    <string-array translatable="false" name="pref_values_transparency">
+    <string translatable="false" name="pref_values_opacity_default">100</string>
+    <string-array translatable="false" name="pref_values_opacity">
         <item>25</item>
         <item>50</item>
         <item>75</item>
         <item>100</item>
     </string-array>
-    <string translatable="false" name="pref_key_baseline_grid_transparency">baseline_grid_transparency</string>
-    <string translatable="false" name="pref_key_typography_lines_transparency">baseline_grid_transparency</string>
-    <string translatable="false" name="pref_key_increment_grid_transparency">baseline_grid_transparency</string>
-    <string translatable="false" name="pref_key_content_keylines_transparency">baseline_grid_transparency</string>
+    <string translatable="false" name="pref_key_baseline_grid_opacity">baseline_grid_opacity</string>
+    <string translatable="false" name="pref_key_typography_lines_opacity">typography_lines_opacity</string>
+    <string translatable="false" name="pref_key_increment_grid_opacity">increment_grid_opacity</string>
+    <string translatable="false" name="pref_key_content_keylines_opacity">content_keylines_opacity</string>
 
 </resources>
