@@ -4,10 +4,12 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
+import android.os.Binder;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -26,7 +28,9 @@ public class OverlayService extends Service {
     private NotificationManager notificationManager;
     private WindowManager windowManager;
 
-    private static boolean alreadyStarted;
+    private static final String UPDATE_EXTRA = "update";
+
+    private static boolean running;
 
     private View view;
     private RegularLineView baselineGridView;
@@ -35,6 +39,14 @@ public class OverlayService extends Service {
     private IrregularLineView contentKeylinesView;
 
     private static final int NOTIFICATION_ID = 1;
+
+    @NonNull
+    public static Intent getUpdateIntent(@NonNull Context context) {
+        Intent intent = new Intent(context, OverlayService.class);
+        intent.putExtra(UPDATE_EXTRA, true);
+
+        return intent;
+    }
 
     @Override
     public void onCreate() {
@@ -48,9 +60,23 @@ public class OverlayService extends Service {
     public void onDestroy() {
         removeNotification();
         removeGrid();
-        alreadyStarted = false;
+        running = false;
 
         super.onDestroy();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (!running) {
+            showNotification();
+            showOverlay();
+
+            running = true;
+        } else if (intent.hasExtra(UPDATE_EXTRA)) {
+            readPreferences();
+        }
+
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Nullable
@@ -59,19 +85,11 @@ public class OverlayService extends Service {
         return null;
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        if (!alreadyStarted) {
-            showNotification();
-            showOverlay();
-
-            alreadyStarted = true;
-        }
-
-        return super.onStartCommand(intent, flags, startId);
+    public static boolean isRunning() {
+        return running;
     }
 
-    public void showOverlay() {
+    private void showOverlay() {
         view = LayoutInflater.from(this).inflate(R.layout.overlay, null);
         bindViews();
         setupContentKeylines();
@@ -193,6 +211,10 @@ public class OverlayService extends Service {
         notificationManager.notify(NOTIFICATION_ID, notification);
     }
 
+    private void removeNotification() {
+        notificationManager.cancel(NOTIFICATION_ID);
+    }
+
     private void removeGrid() {
         if (view != null) {
             windowManager.removeView(view);
@@ -206,11 +228,9 @@ public class OverlayService extends Service {
         setupContentKeylines();
     }
 
-    private void removeNotification() {
-        notificationManager.cancel(NOTIFICATION_ID);
-    }
-
-    public static boolean isStarted() {
-        return alreadyStarted;
+    public class OverlayBinder extends Binder {
+        public OverlayService getService() {
+            return OverlayService.this;
+        }
     }
 }

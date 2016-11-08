@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.Toolbar;
@@ -25,11 +24,11 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
 
         setupAppBar();
-        updateSwitch(OverlayService.isStarted());
+        updateSwitch(OverlayService.isRunning());
         appBarSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (OverlayService.isStarted()) {
+                if (OverlayService.isRunning()) {
                     stopOverlayService();
                 } else {
                     startOverlayService();
@@ -63,12 +62,10 @@ public class MainActivity extends Activity {
         appBarSwitch.setChecked(isStarted);
     }
 
-    public static class SettingsFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            
-            addPreferencesFromResource(R.xml.preferences);
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // The notification might have been clicked
+        updateSwitch(OverlayService.isRunning());
     }
 }

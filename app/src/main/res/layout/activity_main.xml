@@ -16,7 +16,7 @@
         android:paddingEnd="@dimen/material_content_edge_margin_horizontal" />
 
     <fragment
-        android:name="blue.aodev.materialgrids.MainActivity$SettingsFragment"
+        android:name="blue.aodev.materialgrids.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
