@@ -24,6 +24,7 @@ import android.view.WindowManager;
 import blue.aodev.materialgrids.utils.ColorUtil;
 import blue.aodev.materialgrids.widget.IrregularLineView;
 import blue.aodev.materialgrids.widget.KeylineView;
+import blue.aodev.materialgrids.widget.LineView;
 import blue.aodev.materialgrids.widget.RegularLineView;
 
 public class OverlayService extends Service {
@@ -148,6 +149,8 @@ public class OverlayService extends Service {
                     baselineGridView);
             readColor(preferences, R.string.pref_key_baseline_grid_color,
                     baselineGridView, R.color.pref_baseline_grid_default_color);
+            readSize(preferences, R.string.pref_key_baseline_grid_size,
+                    baselineGridView, R.string.pref_value_size_small);
         }
     }
 
@@ -159,6 +162,8 @@ public class OverlayService extends Service {
                     incrementGridView);
             readColor(preferences, R.string.pref_key_increment_grid_color,
                     incrementGridView, R.color.pref_increment_grid_default_color);
+            readSize(preferences, R.string.pref_key_increment_grid_size,
+                    incrementGridView, R.string.pref_value_size_medium);
         }
     }
 
@@ -170,6 +175,8 @@ public class OverlayService extends Service {
                     typographyLinesView);
             readColor(preferences, R.string.pref_key_typography_lines_color,
                     typographyLinesView, R.color.pref_typography_lines_default_color);
+            readSize(preferences, R.string.pref_key_typography_lines_size,
+                    typographyLinesView, R.string.pref_value_size_small);
         }
     }
 
@@ -181,6 +188,8 @@ public class OverlayService extends Service {
                     contentKeylinesView);
             readColor(preferences, R.string.pref_key_content_keylines_color,
                     contentKeylinesView, R.color.pref_content_keylines_default_color);
+            readSize(preferences, R.string.pref_key_content_keylines_size,
+                    contentKeylinesView, R.string.pref_value_size_large);
         }
     }
 
@@ -195,7 +204,7 @@ public class OverlayService extends Service {
 
     private void readOpacity(@NonNull SharedPreferences preferences, @StringRes int keyStringId,
                              @NonNull KeylineView view) {
-        String defaultOpacityString = getString(R.string.pref_values_opacity_default);
+        String defaultOpacityString = getString(R.string.pref_value_opacity_default);
         String opacityString = preferences.getString(getString(keyStringId), defaultOpacityString);
         int opacity = Integer.parseInt(opacityString);
         view.setOpacity(opacity / 100f);
@@ -206,6 +215,14 @@ public class OverlayService extends Service {
         int defaultColor = ColorUtil.getColor(getResources(), getTheme(), defaultColorId);
         int color = preferences.getInt(getString(keyStringId), defaultColor);
         view.setColor(color);
+    }
+
+    private void readSize(@NonNull SharedPreferences preferences, @StringRes int keyStringId,
+                          @NonNull LineView view, @StringRes int defaultSizeId) {
+        String defaultSizeString = getResources().getString(defaultSizeId);
+        String sizeString = preferences.getString(getString(keyStringId), defaultSizeString);
+        int size = Integer.parseInt(sizeString);
+        view.setStrokeWidth(size);
     }
 
     /**
