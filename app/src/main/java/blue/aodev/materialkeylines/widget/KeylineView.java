@@ -1,4 +1,4 @@
-package blue.aodev.materialgrids.widget;
+package blue.aodev.materialkeylines.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,8 +7,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import blue.aodev.materialgrids.R;
-import blue.aodev.materialgrids.utils.ColorUtil;
+import blue.aodev.materialkeylines.R;
+import blue.aodev.materialkeylines.utils.ColorUtil;
 
 public class KeylineView extends View {
 

@@ -1,4 +1,4 @@
-package blue.aodev.materialgrids;
+package blue.aodev.materialkeylines;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,11 +10,11 @@ import android.support.annotation.StringRes;
 import android.util.TypedValue;
 import android.view.View;
 
-import blue.aodev.materialgrids.utils.ColorUtil;
-import blue.aodev.materialgrids.widget.IrregularLineView;
-import blue.aodev.materialgrids.widget.KeylineView;
-import blue.aodev.materialgrids.widget.LineView;
-import blue.aodev.materialgrids.widget.RegularLineView;
+import blue.aodev.materialkeylines.utils.ColorUtil;
+import blue.aodev.materialkeylines.widget.IrregularLineView;
+import blue.aodev.materialkeylines.widget.KeylineView;
+import blue.aodev.materialkeylines.widget.LineView;
+import blue.aodev.materialkeylines.widget.RegularLineView;
 
 public class OverlayPreference {
 

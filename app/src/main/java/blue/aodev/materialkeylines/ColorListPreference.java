@@ -1,6 +1,5 @@
-package blue.aodev.materialgrids;
+package blue.aodev.materialkeylines;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;

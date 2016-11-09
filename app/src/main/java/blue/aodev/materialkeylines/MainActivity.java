@@ -1,4 +1,4 @@
-package blue.aodev.materialgrids;
+package blue.aodev.materialkeylines;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.Toolbar;
 
-import blue.aodev.materialgrids.utils.ColorUtil;
+import blue.aodev.materialkeylines.utils.ColorUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -60,12 +60,5 @@ public class MainActivity extends Activity {
 
     private void updateSwitch(boolean isStarted) {
         appBarSwitch.setChecked(isStarted);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // The notification might have been clicked
-        updateSwitch(OverlayService.isRunning());
     }
 }

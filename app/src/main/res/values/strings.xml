@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Material Grids</string>
+    <string name="app_name">Material Keylines</string>
 
     <!-- Notification -->
     <string name="active_overlay">Active overlay</string>

@@ -1,4 +1,4 @@
-package blue.aodev.materialgrids;
+package blue.aodev.materialkeylines;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -17,8 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
-import blue.aodev.materialgrids.widget.IrregularLineView;
-import blue.aodev.materialgrids.widget.RegularLineView;
+import blue.aodev.materialkeylines.widget.IrregularLineView;
+import blue.aodev.materialkeylines.widget.RegularLineView;
 
 public class OverlayService extends Service {
     private NotificationManager notificationManager;
@@ -141,7 +141,7 @@ public class OverlayService extends Service {
                 new Intent(this, MainActivity.class), 0);
 
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_material_grids_face_on_24dp)
+                .setSmallIcon(R.mipmap.ic_material_keylines_face_on_24dp)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(getText(R.string.active_overlay))
                 .setContentText(getText(R.string.overlay_notification_text))

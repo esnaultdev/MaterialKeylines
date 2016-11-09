@@ -18,7 +18,7 @@
                 android:entries="@array/pref_names_opacity"
                 android:entryValues="@array/pref_values_opacity"
                 android:key="@string/pref_key_baseline_grid_opacity" />
-            <blue.aodev.materialgrids.ColorListPreference
+            <blue.aodev.materialkeylines.ColorListPreference
                 android:defaultValue="@color/pref_baseline_grid_default_color"
                 android:title="@string/pref_title_color"
                 custom:entries="@array/pref_names_color"
@@ -49,7 +49,7 @@
                 android:entries="@array/pref_names_opacity"
                 android:entryValues="@array/pref_values_opacity"
                 android:key="@string/pref_key_increment_grid_opacity" />
-            <blue.aodev.materialgrids.ColorListPreference
+            <blue.aodev.materialkeylines.ColorListPreference
                 android:defaultValue="@color/pref_increment_grid_default_color"
                 android:title="@string/pref_title_color"
                 custom:entries="@array/pref_names_color"
@@ -87,7 +87,7 @@
                 android:entries="@array/pref_names_opacity"
                 android:entryValues="@array/pref_values_opacity"
                 android:key="@string/pref_key_typography_lines_opacity" />
-            <blue.aodev.materialgrids.ColorListPreference
+            <blue.aodev.materialkeylines.ColorListPreference
                 android:defaultValue="@color/pref_typography_lines_default_color"
                 android:title="@string/pref_title_color"
                 custom:entries="@array/pref_names_color"
@@ -118,7 +118,7 @@
                 android:entries="@array/pref_names_opacity"
                 android:entryValues="@array/pref_values_opacity"
                 android:key="@string/pref_key_content_keylines_opacity" />
-            <blue.aodev.materialgrids.ColorListPreference
+            <blue.aodev.materialkeylines.ColorListPreference
                 android:defaultValue="@color/pref_content_keylines_default_color"
                 android:title="@string/pref_title_color"
                 custom:entries="@array/pref_names_color"

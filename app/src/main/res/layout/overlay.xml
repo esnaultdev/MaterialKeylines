@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/space">
 
-        <blue.aodev.materialgrids.widget.RegularLineView
+        <blue.aodev.materialkeylines.widget.RegularLineView
             android:id="@+id/baseline_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,7 +25,7 @@
             custom:direction="both"
             android:visibility="visible"/>
 
-        <blue.aodev.materialgrids.widget.RegularLineView
+        <blue.aodev.materialkeylines.widget.RegularLineView
             android:id="@+id/increment_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -36,7 +36,7 @@
             custom:direction="both"
             android:visibility="invisible"/>
 
-        <blue.aodev.materialgrids.widget.RegularLineView
+        <blue.aodev.materialkeylines.widget.RegularLineView
             android:id="@+id/typography_lines"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -47,7 +47,7 @@
             custom:direction="horizontal"
             android:visibility="invisible"/>
 
-        <blue.aodev.materialgrids.widget.IrregularLineView
+        <blue.aodev.materialkeylines.widget.IrregularLineView
             android:id="@+id/content_keylines"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

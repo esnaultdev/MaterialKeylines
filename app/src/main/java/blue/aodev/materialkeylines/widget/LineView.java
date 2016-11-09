@@ -1,11 +1,11 @@
-package blue.aodev.materialgrids.widget;
+package blue.aodev.materialkeylines.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
-import blue.aodev.materialgrids.R;
+import blue.aodev.materialkeylines.R;
 
 public abstract class LineView extends KeylineView {
 
