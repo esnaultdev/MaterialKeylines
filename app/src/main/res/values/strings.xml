@@ -5,6 +5,7 @@
     <string name="active_overlay">Active overlay</string>
     <string name="overlay_notification_text">Touch to disable overlay</string>
 
+
     <!-- Preference categories -->
     <string name="pref_title_baseline_grid">Baseline grid</string>
     <string name="pref_title_typography_lines">Typography lines</string>
@@ -12,12 +13,14 @@
     <string name="pref_title_content_keylines">Content keylines</string>
     <string name="pref_title_advanced">Advanced</string>
 
+
     <!-- Enabled keylines preference -->
     <string name="pref_title_enabled">Enabled</string>
     <string translatable="false" name="pref_key_baseline_grid_enabled">baseline_grid_enabled</string>
     <string translatable="false" name="pref_key_typography_lines_enabled">typography_lines_enabled</string>
     <string translatable="false" name="pref_key_increment_grid_enabled">increment_grid_enabled</string>
     <string translatable="false" name="pref_key_content_keylines_enabled">content_keylines_enabled</string>
+
 
     <!-- Opacity preference -->
     <string name="pref_title_opacity">Opacity</string>
@@ -88,5 +91,26 @@
     <string translatable="false" name="pref_key_typography_lines_size">typography_lines_size</string>
     <string translatable="false" name="pref_key_increment_grid_size">increment_grid_size</string>
     <string translatable="false" name="pref_key_content_keylines_size">content_keylines_size</string>
+
+
+    <!-- Increment size preference -->
+    <string name="pref_title_increment_size">Increment</string>
+    <string translatable="false" name="pref_value_increment_size_auto">0</string>
+    <string translatable="false" name="pref_value_increment_size_small">48</string>
+    <string translatable="false" name="pref_value_increment_size_medium">56</string>
+    <string translatable="false" name="pref_value_increment_size_large">64</string>
+    <integer-array translatable="false" name="pref_values_increment_size">
+        <item>@string/pref_value_increment_size_auto</item>
+        <item>@string/pref_value_increment_size_small</item>
+        <item>@string/pref_value_increment_size_medium</item>
+        <item>@string/pref_value_increment_size_large</item>
+    </integer-array>
+    <string-array name="pref_names_increment_size">
+        <item>Automatic</item>
+        <item>48dp (phone, landscape)</item>
+        <item>56dp (phone, portrait)</item>
+        <item>64dp (tablet)</item>
+    </string-array>
+    <string translatable="false" name="pref_key_increment_grid_increment_size">increment_grid_increment_size</string>
 
 </resources>

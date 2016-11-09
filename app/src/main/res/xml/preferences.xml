@@ -62,6 +62,13 @@
                 android:entries="@array/pref_names_size_all"
                 android:entryValues="@array/pref_values_size_all"
                 android:key="@string/pref_key_increment_grid_size" />
+            <ListPreference
+                android:defaultValue="@string/pref_value_increment_size_auto"
+                android:title="@string/pref_title_increment_size"
+                android:summary="%s"
+                android:entries="@array/pref_names_increment_size"
+                android:entryValues="@array/pref_values_increment_size"
+                android:key="@string/pref_key_increment_grid_increment_size" />
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_title_typography_lines">

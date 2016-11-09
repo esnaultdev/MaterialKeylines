@@ -6,25 +6,18 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.os.Binder;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
-import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
-import blue.aodev.materialgrids.utils.ColorUtil;
 import blue.aodev.materialgrids.widget.IrregularLineView;
-import blue.aodev.materialgrids.widget.KeylineView;
-import blue.aodev.materialgrids.widget.LineView;
 import blue.aodev.materialgrids.widget.RegularLineView;
 
 public class OverlayService extends Service {
@@ -133,96 +126,11 @@ public class OverlayService extends Service {
     }
 
     private void readPreferences() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        readBaselineGridPrefs(preferences);
-        readIncrementGridPrefs(preferences);
-        readTypographyLinesPrefs(preferences);
-        readContentKeylinesPrefs(preferences);
-    }
-
-    private void readBaselineGridPrefs(@NonNull SharedPreferences preferences) {
-        boolean enable = readEnable(preferences, R.string.pref_key_baseline_grid_enabled);
-        setVisible(baselineGridView, enable);
-        if (enable) {
-            readOpacity(preferences, R.string.pref_key_baseline_grid_opacity,
-                    baselineGridView);
-            readColor(preferences, R.string.pref_key_baseline_grid_color,
-                    baselineGridView, R.color.pref_baseline_grid_default_color);
-            readSize(preferences, R.string.pref_key_baseline_grid_size,
-                    baselineGridView, R.string.pref_value_size_small);
-        }
-    }
-
-    private void readIncrementGridPrefs(@NonNull SharedPreferences preferences) {
-        boolean enable = readEnable(preferences, R.string.pref_key_increment_grid_enabled);
-        setVisible(incrementGridView, enable);
-        if (enable) {
-            readOpacity(preferences, R.string.pref_key_increment_grid_opacity,
-                    incrementGridView);
-            readColor(preferences, R.string.pref_key_increment_grid_color,
-                    incrementGridView, R.color.pref_increment_grid_default_color);
-            readSize(preferences, R.string.pref_key_increment_grid_size,
-                    incrementGridView, R.string.pref_value_size_medium);
-        }
-    }
-
-    private void readTypographyLinesPrefs(@NonNull SharedPreferences preferences) {
-        boolean enable = readEnable(preferences, R.string.pref_key_typography_lines_enabled);
-        setVisible(typographyLinesView, enable);
-        if (enable) {
-            readOpacity(preferences, R.string.pref_key_typography_lines_opacity,
-                    typographyLinesView);
-            readColor(preferences, R.string.pref_key_typography_lines_color,
-                    typographyLinesView, R.color.pref_typography_lines_default_color);
-            readSize(preferences, R.string.pref_key_typography_lines_size,
-                    typographyLinesView, R.string.pref_value_size_small);
-        }
-    }
-
-    private void readContentKeylinesPrefs(@NonNull SharedPreferences preferences) {
-        boolean enable = readEnable(preferences, R.string.pref_key_content_keylines_enabled);
-        setVisible(contentKeylinesView, enable);
-        if (enable) {
-            readOpacity(preferences, R.string.pref_key_content_keylines_opacity,
-                    contentKeylinesView);
-            readColor(preferences, R.string.pref_key_content_keylines_color,
-                    contentKeylinesView, R.color.pref_content_keylines_default_color);
-            readSize(preferences, R.string.pref_key_content_keylines_size,
-                    contentKeylinesView, R.string.pref_value_size_large);
-        }
-    }
-
-    private boolean readEnable(@NonNull SharedPreferences preferences, @StringRes int keyStringId) {
-        return preferences.getBoolean(getString(keyStringId), false);
-    }
-
-    private static void setVisible(@NonNull View view, boolean visible) {
-        int visibility = visible ? View.VISIBLE : View.INVISIBLE;
-        view.setVisibility(visibility);
-    }
-
-    private void readOpacity(@NonNull SharedPreferences preferences, @StringRes int keyStringId,
-                             @NonNull KeylineView view) {
-        String defaultOpacityString = getString(R.string.pref_value_opacity_default);
-        String opacityString = preferences.getString(getString(keyStringId), defaultOpacityString);
-        int opacity = Integer.parseInt(opacityString);
-        view.setOpacity(opacity / 100f);
-    }
-
-    private void readColor(@NonNull SharedPreferences preferences, @StringRes int keyStringId,
-                           @NonNull KeylineView view, @ColorRes int defaultColorId) {
-        int defaultColor = ColorUtil.getColor(getResources(), getTheme(), defaultColorId);
-        int color = preferences.getInt(getString(keyStringId), defaultColor);
-        view.setColor(color);
-    }
-
-    private void readSize(@NonNull SharedPreferences preferences, @StringRes int keyStringId,
-                          @NonNull LineView view, @StringRes int defaultSizeId) {
-        String defaultSizeString = getResources().getString(defaultSizeId);
-        String sizeString = preferences.getString(getString(keyStringId), defaultSizeString);
-        int size = Integer.parseInt(sizeString);
-        view.setStrokeWidth(size);
+        OverlayPreference overlayPref = new OverlayPreference(this);
+        overlayPref.updateBaselineGridView(baselineGridView);
+        overlayPref.updateIncrementGridView(incrementGridView);
+        overlayPref.updateTypographyLinesView(typographyLinesView);
+        overlayPref.updateContentKeylinesView(contentKeylinesView);
     }
 
     /**
