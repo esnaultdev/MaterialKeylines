@@ -23,3 +23,7 @@ Screenshots
 
 See the [screenshots](screenshots) folder for more.
 
+-----
+
+© 2016 Ao (Matthieu Esnault) - Released under [Apache-2.0 License](https://raw.githubusercontent.com/AoDevBlue/MaterialValues/master/LICENSE)
+
