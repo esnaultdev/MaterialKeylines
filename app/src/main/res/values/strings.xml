@@ -2,7 +2,8 @@
     <string name="app_name">Material Grids</string>
 
     <!-- Notification -->
-    <string name="overlay_notification_text">Tap to stop</string>
+    <string name="active_overlay">Active overlay</string>
+    <string name="overlay_notification_text">Touch to disable overlay</string>
 
     <!-- Preference categories -->
     <string name="pref_title_baseline_grid">Baseline grid</string>

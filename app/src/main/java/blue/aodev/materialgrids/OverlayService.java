@@ -229,15 +229,15 @@ public class OverlayService extends Service {
      * Show a notification while this service is running.
      */
     private void showNotification() {
-        PendingIntent deleteIntent = PendingIntent.getBroadcast(this, 0 ,
-                ToggleReceiver.getIntent(false), 0);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, MainActivity.class), 0);
 
         Notification notification = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_material_grids_face_on_24dp)
                 .setWhen(System.currentTimeMillis())
-                .setContentTitle(getText(R.string.app_name))
+                .setContentTitle(getText(R.string.active_overlay))
                 .setContentText(getText(R.string.overlay_notification_text))
-                .setContentIntent(deleteIntent)
+                .setContentIntent(contentIntent)
                 .setPriority(Notification.PRIORITY_LOW)
                 .setOngoing(true)
                 .build();
