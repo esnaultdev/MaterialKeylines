@@ -43,7 +43,6 @@
     <string name="pref_title_color">Color</string>
     <string-array name="pref_names_color">
         <item>Red</item>
-        <item>Purple</item>
         <item>Blue</item>
         <item>Green</item>
         <item>Orange</item>
