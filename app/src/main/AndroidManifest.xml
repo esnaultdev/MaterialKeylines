@@ -27,7 +27,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="blue.aodev.materialgrids.TOGGLE" />
+                <action android:name="blue.aodev.materialkeylines.TOGGLE" />
             </intent-filter>
         </receiver>
     </application>

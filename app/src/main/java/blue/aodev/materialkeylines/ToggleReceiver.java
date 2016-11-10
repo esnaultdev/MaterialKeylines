@@ -9,7 +9,7 @@ public class ToggleReceiver extends BroadcastReceiver {
     private static final String EXTRA_ENABLED = "enabled";
 
     public static Intent getIntent(boolean enabled) {
-        Intent intent = new Intent("blue.aodev.materialgrids.TOGGLE");
+        Intent intent = new Intent("blue.aodev.materialkeylines.TOGGLE");
         intent.putExtra(EXTRA_ENABLED, enabled);
         return intent;
     }
