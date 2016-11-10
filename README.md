@@ -13,7 +13,7 @@ The overlay can be composed of:
 - The content keylines
 - The typography lines (4dp)
 
-Color, opacity and size of the grids/lines can be customized to fit your need.
+Color, opacity and size of the grids/lines can be customized to fit your needs.
 
 
 Screenshots
