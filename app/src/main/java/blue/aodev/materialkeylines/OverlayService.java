@@ -133,6 +133,11 @@ public class OverlayService extends Service {
         overlayPref.updateContentKeylinesView(contentKeylinesView);
     }
 
+    private void readIncrementPreferences() {
+        OverlayPreference overlayPref = new OverlayPreference(this);
+        overlayPref.updateIncrementGridView(incrementGridView);
+    }
+
     /**
      * Show a notification while this service is running.
      */
@@ -168,6 +173,7 @@ public class OverlayService extends Service {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         setupContentKeylines();
+        readIncrementPreferences();
     }
 
     public class OverlayBinder extends Binder {
