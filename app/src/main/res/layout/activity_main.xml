@@ -10,7 +10,7 @@
     <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/material_app_bar_height_default"
+        android:layout_height="@dimen/material_app_bar_default_height"
         android:background="?android:attr/colorPrimary"
         android:elevation="@dimen/material_elevation_app_bar"
         android:paddingEnd="@dimen/material_content_edge_margin_horizontal" />
